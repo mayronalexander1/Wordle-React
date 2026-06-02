@@ -49,6 +49,7 @@ const handleKey = (e) => {
       <h1>Wordle</h1>
       <Board currentWord={currentWord} guesses={guesses} />
       <p>{message}</p>
+      <p>{secretWord}</p>
     </div>
   )
 }
