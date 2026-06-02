@@ -36,7 +36,7 @@ function App() {
         }
         setCurrentWord('')
       }
-    } else if (letter === 'backspace') {
+    } else if (letter === 'BACKSPACE') {
       setCurrentWord(prev => prev.slice(0, -1))
     } else if (/^[A-Z]$/.test(letter) && currentWord.length < 5) {
       setCurrentWord(prev => prev + letter)
