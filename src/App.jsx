@@ -20,9 +20,9 @@ function App() {
   }
 
   const handleKey = (e) => {
-    const letter = e.key.toLowerCase()
+    const letter = e.key.toUpperCase()
 
-    if (letter === 'enter') {
+    if (letter === 'ENTER') {
       if (currentWord.length === 5) {
         const result = checkWord(currentWord)
         if (result.every(r => r === 'correct')) {
@@ -31,7 +31,7 @@ function App() {
         }
         setGuesses(prev => [...prev, { word: currentWord, result }])
         if (guesses.length === 5) {
-          setGameOver(false)
+          setGameOver(true)
           setMessage(loseMessages[Math.floor(Math.random() * loseMessages.length)])
         }
         setCurrentWord('')
