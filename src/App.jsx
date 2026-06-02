@@ -3,7 +3,7 @@ import Board from './components/Board'
 import './App.css'
 import {loseMessages} from './data/messages'
 import {words} from './data/secretWords'
-import {Contador} from './components/Contador'
+import Contador from './components/Contador'
 
 function App() {
   const [guesses, setGuesses] = useState([])
