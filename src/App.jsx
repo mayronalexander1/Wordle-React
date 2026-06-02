@@ -7,7 +7,7 @@ import {words} from './data/secretWords'
 function App() {
   const [guesses, setGuesses] = useState([])
   const [currentWord, setCurrentWord] = useState('')
-  const [secretWord] = useState (() => words[Math.floor(Math.random() * words.length)])
+  const [secretWord] = useState(words[Math.floor(Math.random() * words.length)])
   const [gameOver, setGameOver] = useState(false)
   const [message, setMessage] = useState('')
 
@@ -19,25 +19,24 @@ function App() {
     })
   }
 
-const handleKey = (e) => {
-    const letter = e.key.toUpperCase()
+  const handleKey = (e) => {
+    const letter = e.key.toLowerCase()
 
-    if (letter === 'ENTER') {
+    if (letter === 'enter') {
       if (currentWord.length === 5) {
         const result = checkWord(currentWord)
         if (result.every(r => r === 'correct')) {
           setGameOver(true)
           setMessage('Ganaste!!!')
         }
-        console.log(result)
         setGuesses(prev => [...prev, { word: currentWord, result }])
         if (guesses.length === 5) {
-          setGameOver(true)
+          setGameOver(false)
           setMessage(loseMessages[Math.floor(Math.random() * loseMessages.length)])
         }
         setCurrentWord('')
       }
-    } else if (letter === 'BACKSPACE') {
+    } else if (letter === 'backspace') {
       setCurrentWord(prev => prev.slice(0, -1))
     } else if (/^[A-Z]$/.test(letter) && currentWord.length < 5) {
       setCurrentWord(prev => prev + letter)
@@ -49,7 +48,6 @@ const handleKey = (e) => {
       <h1>Wordle</h1>
       <Board currentWord={currentWord} guesses={guesses} />
       <p>{message}</p>
-      <p>{secretWord}</p>
     </div>
   )
 }
