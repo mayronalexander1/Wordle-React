@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div onKeyDown={handleKey} tabIndex={0} autoFocus>
-      <h1>Wordle</h1>
+      <h1>Adivina la palabra</h1>
       <Board currentWord={currentWord} guesses={guesses} />
       <p>{message}</p>
       <p>{secretWord}</p>
